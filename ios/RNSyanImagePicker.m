@@ -129,7 +129,7 @@ RCT_EXPORT_METHOD(openVideoPicker:(NSDictionary *)options callback:(RCTResponseS
     imagePickerVc.allowTakePicture = isCamera; // 允许用户在内部拍照
     imagePickerVc.allowPickingVideo = allowPickingVideo; // 不允许视频
     imagePickerVc.allowPickingImage = allowPickingImage;
-    imagePickerVc.allowTakeVideo = NO;
+    imagePickerVc.allowTakeVideo = isCamera;
     imagePickerVc.videoMaximumDuration = videoMaximumDuration;
     imagePickerVc.allowPickingMultipleVideo = allowPickingMultipleVideo;
     imagePickerVc.allowPickingOriginalPhoto = allowPickingOriginalPhoto; // 允许原图

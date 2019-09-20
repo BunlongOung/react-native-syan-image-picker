@@ -274,16 +274,24 @@ public class RNSyanImagePickerModule extends ReactContextBaseJavaModule {
         int MinSecond = this.cameraOptions.getInt("MinSecond");
         int recordVideoSecond = this.cameraOptions.getInt("recordVideoSecond");
         int videoCount = this.cameraOptions.getInt("videoCount");
+        boolean isCamera = this.cameraOptions.getBoolean("isCamera");
+
+        int modeValue;
+        if (videoCount == 1) {
+            modeValue = 1;
+        } else {
+            modeValue = 2;
+        }
         Activity currentActivity = getCurrentActivity();
         PictureSelector.create(currentActivity)
                 .openGallery(PictureMimeType.ofVideo())//全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
                 .selectionMedia(selectList) // 当前已选中的视频 List
                 .openClickSound(false)// 是否开启点击声音 true or false
-                .isCamera(false)// 是否显示拍照按钮 true or false
+                .isCamera(isCamera)// 是否显示拍照按钮 true or false
                 .maxSelectNum(videoCount)// 最大视频选择数量 int
                 .minSelectNum(1)// 最小选择数量 int
                 .imageSpanCount(4)// 每行显示个数 int
-                .selectionMode(PictureConfig.MULTIPLE)// 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
+                .selectionMode(modeValue)// 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
                 .previewVideo(true)// 是否可预览视频 true or false
                 .videoQuality(quality)// 视频录制质量 0 or 1 int
                 .videoMaxSecond(MaxSecond)// 显示多少秒以内的视频or音频也可适用 int
